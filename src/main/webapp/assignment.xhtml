@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+<h:head>
+    <title>Zuordnung</title>
+</h:head>
+<h:body>
+    <h1>Zuordnung verwalten</h1>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="testrun" value="Testlauf:" />
+            <h:selectOneMenu id="testrun" value="#{assignmentBean.selectedTestRunId}">
+                <f:selectItems value="#{assignmentBean.testRuns}"
+                               var="tr"
+                               itemValue="#{tr.id}"
+                               itemLabel="#{tr.name}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel for="testcase" value="Testfall:" />
+            <h:selectOneMenu id="testcase" value="#{assignmentBean.selectedTestCaseId}">
+                <f:selectItems value="#{assignmentBean.testCases}"
+                               var="tc"
+                               itemValue="#{tc.id}"
+                               itemLabel="#{tc.title}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel for="testerName" value="Testername:" />
+            <h:inputText id="testerName" value="#{assignmentBean.testerName}" />
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Zuordnung speichern" action="#{assignmentBean.assignTester}" />
+    </h:form>
+
+    <br />
+    <h:link outcome="index.xhtml" value="Zurück zur Startseite" />
+</h:body>
+</html>

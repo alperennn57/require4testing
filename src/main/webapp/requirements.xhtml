@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Anforderungen</title>
+</h:head>
+<h:body>
+    <h1>Anforderungen verwalten</h1>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="title" value="Titel:" />
+            <h:inputText id="title" value="#{requirementBean.requirement.title}" />
+
+            <h:outputLabel for="description" value="Beschreibung:" />
+            <h:inputTextarea id="description" value="#{requirementBean.requirement.description}" />
+
+            <h:outputLabel for="priority" value="Priorität:" />
+            <h:inputText id="priority" value="#{requirementBean.requirement.priority}" />
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Anforderung speichern" action="#{requirementBean.saveRequirement}" />
+    </h:form>
+
+    <h2>Vorhandene Anforderungen</h2>
+    <h:dataTable value="#{requirementBean.requirements}" var="req" border="1">
+        <h:column>
+            <f:facet name="header">Titel</f:facet>
+            #{req.title}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Beschreibung</f:facet>
+            #{req.description}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Priorität</f:facet>
+            #{req.priority}
+        </h:column>
+    </h:dataTable>
+
+    <br />
+    <h:link outcome="index.xhtml" value="Zurück zur Startseite" />
+</h:body>
+</html>

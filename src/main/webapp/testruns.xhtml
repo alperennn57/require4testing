@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Testläufe</title>
+</h:head>
+<h:body>
+    <h1>Testläufe verwalten</h1>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="name" value="Name:" />
+            <h:inputText id="name" value="#{testRunBean.testRun.name}" />
+
+            <h:outputLabel for="plannedDate" value="Geplantes Datum:" />
+            <h:inputText id="plannedDate" value="#{testRunBean.testRun.plannedDate}" />
+
+            <h:outputLabel for="testerName" value="Testername:" />
+            <h:inputText id="testerName" value="#{testRunBean.testRun.testerName}" />
+
+            <h:outputLabel for="status" value="Status:" />
+            <h:inputText id="status" value="#{testRunBean.testRun.status}" />
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Testlauf speichern" action="#{testRunBean.saveTestRun}" />
+    </h:form>
+
+    <h2>Vorhandene Testläufe</h2>
+    <h:dataTable value="#{testRunBean.testRuns}" var="tr" border="1">
+        <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{tr.name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Geplantes Datum</f:facet>
+            #{tr.plannedDate}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Testername</f:facet>
+            #{tr.testerName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Status</f:facet>
+            #{tr.status}
+        </h:column>
+    </h:dataTable>
+
+    <br />
+    <h:link outcome="index.xhtml" value="Zurück zur Startseite" />
+</h:body>
+</html>
